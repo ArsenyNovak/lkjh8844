@@ -63,7 +63,7 @@ def show_note(id_note):
     if note:
         return render_template("show_note.html", note=note[1], pk=id_note)
     else:
-        return abort(404)
+        return render_template("error.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

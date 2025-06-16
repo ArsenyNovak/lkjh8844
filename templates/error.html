@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Такой записи не существует {{ pk }}</h3>
+<hr>
+<a href="{{ url_for('index') }}">вернуться на главную страницу</a>
+{% endblock %}
