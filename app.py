@@ -1,31 +1,17 @@
 import json
 import os
 
-import psycopg2
+
 from dotenv import load_dotenv
-from flask import Flask, render_template, request, flash, g, abort
+from flask import Flask, render_template, request, flash, g
+
+from init_db import get_db_connection
 
 load_dotenv()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 
-def get_db_connection():
-    conn = psycopg2.connect(
-        host='localhost',
-        database='flask_db',
-        user=os.environ['DB_USERNAME'],
-        password=os.environ['DB_PASSWORD']
-    )
-    return conn
-
-def create_db():
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute(open('init_db.sql', 'r').read())
-    conn.commit()
-    cur.close()
-    conn.close()
 
 def get_db():
     if not hasattr(g, 'link_db'):
@@ -66,4 +52,4 @@ def show_note(id_note):
         return render_template("error.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
