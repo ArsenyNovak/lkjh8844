@@ -1,32 +1,17 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <link type="text/css" href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>App</title>
-</head>
-<body>
-    <div class="wrapper">
-        <h2>App</h2>
-        <hr>
-        <form action="/" method="post">
-          <div class="inputs">
-             <input type="text" name="name1">
-          </div>
-          {% for cat, msg in get_flashed_messages(True) %}
-            <div class="flash {{ cat }}">{{ msg }}</div>
-          {% endfor %}
-          <hr>
-          <div class="buttons">
-              <button type="button" id="add">добавить</button>
-              <button type="submit">отправить</button>
-          </div>
-        </form>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<form action="/" method="post">
+  <div class="inputs">
+     <input type="text" name="name1">
+  </div>
+  {% for cat, msg in get_flashed_messages(True) %}
+    <div class="flash {{ cat }}">{{ msg }}</div>
+  {% endfor %}
+  <hr>
+  <div class="buttons">
+      <button type="button" id="add">добавить</button>
+      <button type="submit">отправить</button>
+  </div>
+</form>
+{% endblock %}
+
