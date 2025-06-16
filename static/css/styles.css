@@ -12,6 +12,12 @@ ul {
     margin: 0;
 }
 
+p {
+    margin: auto;
+    font-size: 14px;
+    text-align: center;
+}
+
 .wrapper {
     background-color: #00CED1;
     margin: auto;
